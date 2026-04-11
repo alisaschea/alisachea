@@ -72,12 +72,36 @@ h2.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw
 .project-sub{font-size:11px;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;}
 .project-desc{font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:16px;}
 .snap-scenarios{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;margin:16px 0;font-size:11px;color:var(--text-muted);}
-.snap-scenarios .label{color:var(--gold);}
+.snap-scenarios .slabel{color:var(--gold);}
 .project-tags{display:flex;flex-wrap:wrap;gap:8px;}
 .tag{border:1px solid var(--border);padding:4px 10px;font-size:10px;letter-spacing:0.08em;color:var(--text-muted);}
 .project-metric{margin-top:24px;padding-top:24px;border-top:1px solid var(--border);display:flex;gap:32px;flex-wrap:wrap;}
 .metric-val{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);font-weight:600;line-height:1;}
 .metric-label{font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;}
+
+/* Report toggle */
+.report-toggle{display:flex;align-items:center;gap:10px;margin-top:28px;padding-top:24px;border-top:1px solid var(--border);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);cursor:none;user-select:none;}
+.report-toggle:hover{color:var(--gold-light);}
+.toggle-icon{font-size:14px;transition:transform 0.3s;}
+.report-toggle.open .toggle-icon{transform:rotate(90deg);}
+.report-body{display:none;margin-top:28px;border-top:1px solid var(--border);padding-top:28px;}
+.report-body.open{display:block;}
+
+/* Report typography */
+.report-body h2{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--cream);margin:28px 0 12px;border-bottom:1px solid var(--border);padding-bottom:8px;}
+.report-body h2:first-child{margin-top:0;}
+.report-body h3{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin:20px 0 10px;}
+.report-body h4{font-size:11px;color:var(--cream);margin:16px 0 8px;font-weight:400;}
+.report-body p{font-size:12px;color:var(--text-muted);line-height:1.9;margin-bottom:12px;}
+.report-body pre{background:rgba(201,168,76,0.05);border:1px solid var(--border);padding:14px 16px;font-size:11px;color:var(--cream);line-height:1.8;overflow-x:auto;margin:12px 0;white-space:pre-wrap;}
+.report-body table{width:100%;border-collapse:collapse;font-size:11px;margin:12px 0;}
+.report-body th{color:var(--gold);text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);letter-spacing:0.06em;font-weight:400;}
+.report-body td{color:var(--text-muted);padding:7px 12px;border-bottom:1px solid rgba(201,168,76,0.07);}
+.report-body td:first-child{color:var(--cream);}
+.report-body hr{border:none;border-top:1px solid var(--border);margin:24px 0;}
+.report-body strong{color:var(--cream);font-weight:400;}
+.report-body blockquote{border-left:2px solid var(--gold);padding-left:16px;margin:12px 0;font-size:11px;color:var(--text-muted);font-style:italic;}
+
 #education{background:var(--dark2);}
 .edu-card{border:1px solid var(--border);padding:48px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;max-width:900px;}
 .edu-school{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--cream);margin-bottom:8px;}
@@ -236,13 +260,13 @@ footer{border-top:1px solid var(--border);padding:32px 60px;display:flex;justify
     <div class="project-card reveal">
       <div class="project-num">01</div>
       <div class="project-title">Snap Inc. Valuation Analysis</div>
-      <div class="project-sub">DCF &middot; WACC &middot; IPO Analysis &middot; B BUS 454</div>
+      <div class="project-sub">DCF &middot; WACC &middot; IPO Analysis</div>
       <p class="project-desc">Performed a full DCF valuation of Snap Inc. at IPO using Morgan Stanley analyst Brian Nowak's base-case model (WACC 9.7%, g 3.5%), then stress-tested across three alternative scenarios to evaluate valuation sensitivity.</p>
       <div class="snap-scenarios">
-        <span class="label">Q1 Baseline</span><span>$25.12 / share</span>
-        <span class="label">Q2 WACC 13%</span><span>$13.83 / share (-44.9%)</span>
-        <span class="label">Q3 FCF -28%</span><span>$17.96 / share (-28.5%)</span>
-        <span class="label">Q4 g = 2.5%</span><span>$22.21 / share (-11.6%)</span>
+        <span class="slabel">Q1 Baseline</span><span>$25.12 / share</span>
+        <span class="slabel">Q2 WACC 13%</span><span>$13.83 / share (-44.9%)</span>
+        <span class="slabel">Q3 FCF -28%</span><span>$17.96 / share (-28.5%)</span>
+        <span class="slabel">Q4 g = 2.5%</span><span>$22.21 / share (-11.6%)</span>
       </div>
       <p class="project-desc">Identified potential underwriting bias in Morgan Stanley's 9.7% WACC, the lowest among all analysts surveyed (avg. 12.3%), and assessed a beta of 1.35 reflecting Snap's elevated market risk at IPO.</p>
       <div class="project-metric">
@@ -252,6 +276,137 @@ footer{border-top:1px solid var(--border);padding:32px 60px;display:flex;justify
       </div>
       <div class="project-tags" style="margin-top:20px">
         <span class="tag">DCF</span><span class="tag">WACC</span><span class="tag">Terminal Value</span><span class="tag">Sensitivity Analysis</span><span class="tag">Beta</span><span class="tag">IPO Valuation</span>
+      </div>
+
+      <div class="report-toggle" id="snapToggle" onclick="toggleReport()">
+        <span class="toggle-icon">&#9658;</span>
+        <span>Read Full Report</span>
+      </div>
+
+      <div class="report-body" id="snapReport">
+        <h2>1. Executive Summary</h2>
+        <table>
+          <tr><th>Metric</th><th>Q1 Baseline</th><th>Q2 Higher WACC</th><th>Q3 Lower FCF</th><th>Q4 Lower TV g</th></tr>
+          <tr><td>PV of FCF (2017-2025)</td><td>$3,775.76M</td><td>$2,640.12M</td><td>$1,958.22M</td><td>$3,775.76M</td></tr>
+          <tr><td>Terminal Value (2025$)</td><td>$67,677.42M</td><td>$44,168.42M</td><td>$48,726.46M</td><td>$58,277.78M</td></tr>
+          <tr><td>PV of Terminal Value</td><td>$29,416.04M</td><td>$14,703.00M</td><td>$21,178.99M</td><td>$25,330.46M</td></tr>
+          <tr><td>Enterprise Value</td><td>$33,191.80M</td><td>$17,343.11M</td><td>$23,137.21M</td><td>$29,106.22M</td></tr>
+          <tr><td>Market Value of Equity</td><td>$35,272.80M</td><td>$19,424.11M</td><td>$25,218.21M</td><td>$31,187.22M</td></tr>
+          <tr><td>Shares Outstanding</td><td>1,404M</td><td>1,404M</td><td>1,404M</td><td>1,404M</td></tr>
+          <tr><td><strong>Estimated Share Price</strong></td><td><strong>$25.12</strong></td><td><strong>$13.83</strong></td><td><strong>$17.96</strong></td><td><strong>$22.21</strong></td></tr>
+        </table>
+
+        <h2>2. Baseline Valuation (Nowak's Model)</h2>
+        <p>This section presents the step-by-step valuation of Snap Inc. using Brian Nowak's base-case assumptions from Morgan Stanley. The analysis applies a WACC of 9.7% and a terminal growth rate of 3.5%.</p>
+        <h3>Calculations</h3>
+        <h4>Step 1 - PV of FCF (2017-2025)</h4>
+        <pre>PV of FCF (2017-2025) = $3,775.76 million</pre>
+        <h4>Step 2 - PV of Terminal Value</h4>
+        <pre>TV  = FCF(N+1) / (WACC - g)
+    = 4,196 / (0.097 - 0.035)
+    = $67,677.42 million
+
+PV of TV = 67,677.42 / (1 + 0.097)^9
+         = $29,416.04 million</pre>
+        <h4>Step 3 - Enterprise Value</h4>
+        <pre>EV = PV of TV + PV of FCF
+   = $29,416.04 + $3,775.76
+   = $33,191.80 million</pre>
+        <h4>Step 4 - Total Equity Value</h4>
+        <pre>Equity = EV + Cash - Debt
+       = $33,191.80 + $2,081 - $0
+       = $35,272.80 million</pre>
+        <h4>Step 5 &amp; 6 - Share Price</h4>
+        <pre>Share Price = $35,272.80 / 1,404 = $25.12</pre>
+
+        <h2>3. Higher WACC Scenario (13%)</h2>
+        <pre>PV of FCF = $2,640.12M
+TV        = $44,168.42M
+PV of TV  = $14,703.00M
+EV        = $17,343.11M
+Equity    = $19,424.11M
+Price     = $13.83  (down $11.29 or 44.94%)</pre>
+        <p>A higher WACC indicates a higher required rate of return, making the stock less attractive. Future cash flows are discounted more heavily, reducing their present value and the firm's valuation. A higher WACC also increases the cost of raising new capital, constraining growth opportunities.</p>
+
+        <h2>4. Lower FCF Forecasts (-28% for 2021-2025)</h2>
+        <pre>PV of FCF = $1,958.22M
+TV        = $48,726.46M
+PV of TV  = $21,178.99M
+EV        = $23,137.21M
+Equity    = $25,218.21M
+Price     = $17.96  (down $7.16 or 28.50%)</pre>
+        <p>Lower FCF projections signal weaker expected operating performance, reducing both terminal value and present value of cash flows. Weaker cash flow expectations indicate slower growth potential and reduced financial strength.</p>
+
+        <h2>5. Lower Terminal Value Growth Rate (2.5%)</h2>
+        <pre>TV        = 4,196 / (0.097 - 0.025) = $58,277.78M
+PV of TV  = $25,330.46M
+EV        = $29,106.22M
+Equity    = $31,187.22M
+Price     = $22.21  (down $2.91 or 11.59%)</pre>
+        <p>A decline in the perpetual growth rate signals weaker long-term expectations, leading investors to value the company less. Even a 1% reduction in the growth rate meaningfully compresses the terminal value, which drives the majority of the firm's valuation.</p>
+
+        <h2>6. Key Input Assumptions</h2>
+        <h3>6a. WACC Analysis</h3>
+        <pre>WACC = (E/V) x Re + (D/V) x Rd x (1 - T)
+     = (0.98 x 0.099) + (0.02 x 0.03 x 0.65)
+     = 9.7%</pre>
+        <table>
+          <tr><th>Input</th><th>Value</th></tr>
+          <tr><td>E/V (Equity Weight)</td><td>98%</td></tr>
+          <tr><td>D/V (Debt Weight)</td><td>2%</td></tr>
+          <tr><td>Re (Cost of Equity)</td><td>9.9%</td></tr>
+          <tr><td>Rd (Cost of Debt)</td><td>3.0%</td></tr>
+          <tr><td>T (Tax Rate)</td><td>35%</td></tr>
+          <tr><td><strong>Beta</strong></td><td><strong>1.35</strong></td></tr>
+        </table>
+        <p>A beta of 1.35 means Snap stock is 35% more volatile than the overall market. In a bull market Snap would outperform; in a bear market it would suffer larger losses. This beta is reasonable given Snap's unproven business model, untested management, slowing growth, and fierce competition from Facebook and Instagram.</p>
+        <h3>Analyst WACC Comparison</h3>
+        <table>
+          <tr><th>Analyst</th><th>WACC</th></tr>
+          <tr><td>Morgan Stanley</td><td>9.7%</td></tr>
+          <tr><td>Cantor</td><td>10.3%</td></tr>
+          <tr><td>Piper Jaffray</td><td>10.7%</td></tr>
+          <tr><td>Credit Suisse</td><td>11.0%</td></tr>
+          <tr><td>Cowen &amp; Co</td><td>10.0%</td></tr>
+          <tr><td>JMP Securities</td><td>11.0%</td></tr>
+          <tr><td>UBS</td><td>11.0%</td></tr>
+          <tr><td>Pivotal</td><td>12.0%</td></tr>
+          <tr><td>FBN</td><td>12.0%</td></tr>
+          <tr><td>Aegis Capital</td><td>13.4%</td></tr>
+          <tr><td>JP Morgan</td><td>13.0%</td></tr>
+          <tr><td>RBC Capital</td><td>15.0%</td></tr>
+          <tr><td>Deutsche Bank</td><td>15.7%</td></tr>
+          <tr><td>William Blair</td><td>18.0%</td></tr>
+        </table>
+        <p>Morgan Stanley's 9.7% WACC is the lowest among all analysts surveyed and well below the peer average of 12.3%. As Snap's lead underwriter, Morgan Stanley had incentives to present a favorable valuation. While it may reflect deeper insight into Snap's business, the aggressive discount rate raises questions about whether it fully captures market-perceived risk.</p>
+
+        <h3>6b. Terminal Growth Rate Analysis</h3>
+        <table>
+          <tr><th>Growth Rate</th><th>Terminal Value (2025$)</th></tr>
+          <tr><td>2.0%</td><td>$54,493.51M</td></tr>
+          <tr><td>2.5%</td><td>$58,277.78M</td></tr>
+          <tr><td>3.0%</td><td>$62,626.87M</td></tr>
+          <tr><td>3.5% (Nowak)</td><td>$67,677.42M</td></tr>
+          <tr><td>4.0%</td><td>$73,613.04M</td></tr>
+          <tr><td>4.5%</td><td>$80,692.31M</td></tr>
+        </table>
+        <p>Minor adjustments in the terminal growth rate produce substantial swings in terminal value. Increasing from 3.5% to 4.0% raises terminal value by nearly $6B; reducing to 3.0% lowers it by ~$5B. Nowak's 3.5% aligns with the peer median but assumes Snap can sustain steady cash flow growth indefinitely despite intense competition and persistent profitability uncertainty.</p>
+
+        <h3>6c. Revenue Growth and FCF Forecast Analysis</h3>
+        <table>
+          <tr><th>Year</th><th>Revenue ($M)</th><th>Growth Rate</th></tr>
+          <tr><td>2017</td><td>944</td><td>133.3%</td></tr>
+          <tr><td>2018</td><td>1,935</td><td>105.0%</td></tr>
+          <tr><td>2019</td><td>3,254</td><td>68.2%</td></tr>
+          <tr><td>2020</td><td>4,902</td><td>50.6%</td></tr>
+          <tr><td>2021</td><td>6,907</td><td>40.9%</td></tr>
+          <tr><td>2022</td><td>9,189</td><td>33.0%</td></tr>
+          <tr><td>2023</td><td>11,635</td><td>26.6%</td></tr>
+          <tr><td>2024</td><td>14,131</td><td>21.4%</td></tr>
+          <tr><td>2025</td><td>16,569</td><td>17.3%</td></tr>
+        </table>
+        <p><strong>Overall Revenue CAGR (2017-2025):</strong> 43.07%</p>
+        <p>Nowak projected DAU growing from 158M in 2016 to 236M by 2020 at 11% CAGR, with ad load increasing more than 10x over four years. Most analyst price targets clustered between $24 and $30 per share despite widely differing underlying assumptions, as optimistic analysts offset higher FCF forecasts with higher WACCs. The growth trajectory is not entirely reasonable in our assessment: the 100%+ early growth rates are aggressive, though the gradual deceleration toward 17% by 2025 is more defensible.</p>
       </div>
     </div>
 
@@ -367,6 +522,12 @@ function animateRing(){rx+=(mx-rx)*0.18;ry+=(my-ry)*0.18;ring.style.left=rx+'px'
 animateRing();
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');entry.target.querySelectorAll('.skill-fill').forEach(function(b){b.classList.add('animated');});obs.unobserve(entry.target);}});},{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+function toggleReport(){
+  var toggle=document.getElementById('snapToggle');
+  var body=document.getElementById('snapReport');
+  toggle.classList.toggle('open');
+  body.classList.toggle('open');
+}
 </script>
 </body>
 </html>
